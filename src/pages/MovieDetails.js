@@ -6,7 +6,6 @@ import { getMovieDetails } from '../API';
 import MovieCard from 'components/MovieCard';
 import MovieLinks from 'components/MovieLinks';
 
-
 function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
