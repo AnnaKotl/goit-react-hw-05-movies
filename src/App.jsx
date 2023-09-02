@@ -1,61 +1,72 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+
 const Home = lazy(() => import('./pages/Home'));
 const Movies = lazy(() => import('./pages/Movies'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails'));
 const Cast = lazy(() => import('./pages/Cast'));
 const Reviews = lazy(() => import('./pages/Reviews'));
 
+<Route path="/" element={<AppLayout />}></Route>
+
 export const App = () => {
   return (
-    <Routes>
+    <div>
+    <Routes>  
+              
+        <Route path="/" element={<AppLayout />}>
+            <Route index element={<Home />} />
+            <Route path="movies" element={<Movies />} />
+        </Route>
+
         <Route
-            path="/"
-            element={
+          path="/"
+          element={
             <Suspense fallback={<div>Loading...</div>}>
-                {' '}
-                <Home />{' '}
+              {' '}
+              <Home />{' '}
             </Suspense>
-            }
+          }
         />
         <Route
-            path="/movies"
-            element={
+          path="/movies"
+          element={
             <Suspense fallback={<div>Loading...</div>}>
-                {' '}
-                <Movies />{' '}
+              {' '}
+              <Movies />{' '}
             </Suspense>
-            }
+          }
         />
         <Route
-            path="/movies/:movieId"
-            element={
+          path="/movies/:movieId"
+          element={
             <Suspense fallback={<div>Loading...</div>}>
-                {' '}
-                <MovieDetails />{' '}
+              {' '}
+              <MovieDetails />{' '}
             </Suspense>
-            }
+          }
         >
-            <Route
+          <Route
             path="cast"
             element={
-                <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Loading...</div>}>
                 {' '}
                 <Cast />{' '}
-                </Suspense>
+              </Suspense>
             }
-            />
-            <Route
+          />
+          <Route
             path="reviews"
             element={
-                <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Loading...</div>}>
                 {' '}
                 <Reviews />{' '}
-                </Suspense>
+              </Suspense>
             }
-            />
+          />
         </Route>
-    </Routes>
+      </К>
+    </div>
   );
 };
