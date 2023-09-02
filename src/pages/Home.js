@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { startTransition } from 'react';
 import { fetchTrendingMovies } from '../API';
 import { TrendItems } from 'components/TrendItems';
 
@@ -9,10 +8,8 @@ function Home() {
   useEffect(() => {
     const fetchTrending = async () => {
       try {
-        await startTransition(() => {
-          const data = fetchTrendingMovies();
-          setTrendingMovies(data.results);
-        });
+        const data = await fetchTrendingMovies();
+        setTrendingMovies(data.results);
       } catch (error) {
         console.error('Error fetching trending movies:', error);
       }
@@ -20,7 +17,6 @@ function Home() {
 
     fetchTrending();
   }, []);
-  // console.log(trendingMovies);
 
   return (
     <div>

@@ -1,16 +1,51 @@
-// import React, { startTransition } from 'react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+import { searchMovies } from 'API';
+
+import { FormSearch } from 'components/FormSearch';
+import MovieList from 'components/MovieList';
 
 
+const Movies = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movieName = searchParams.get('query') || '';
+  const [loading, setLoading] = useState(false);
 
-function Movies() {
-  // const startTransition = React.unstable_startTransition;
+  const updateQueryString = query => {
+    const nextParams = query !== '' && { query };
+    setSearchParams(nextParams);
+  };
+
+  useEffect(() => {
+    const search = async () => {
+      try {
+        setLoading(true);
+        const movies = await searchMovies(movieName);
+        setSearchResults(movies);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    search();
+  }, [movieName]);
 
   return (
     <div>
-      <h1>Movies Page</h1>
+      {/* Включаємо компонент пошуку */}
+      <FormSearch value={movieName} onChange={updateQueryString} />
+
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        // Відображаємо результати пошуку за допомогою MovieList компонента
+        <MovieList movies={searchResults} />
+      )}
     </div>
   );
-}
+};
 
 export default Movies;
