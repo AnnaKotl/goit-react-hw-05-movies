@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const TrendItems = ({ items }) => {
+  // console.log(items);
   return (
     <div>
       {items && items.length > 0 ? (

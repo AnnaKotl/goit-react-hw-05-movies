@@ -11,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
     line-height: 1.5;
-    color: #152121;
-    background: #f2f9fa;
+    color: #f5e1e8;
+    background: #061e45;
 }
 
     code {
@@ -39,6 +39,14 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
     max-width: 100%;
     height: auto;
+    }
+
+    a {
+    color: #f5e1e8;
+    font-size: 18px;
+    font-style: normal;
+    cursor: pointer;
+    text-decoration: none;
     }
 
 `;

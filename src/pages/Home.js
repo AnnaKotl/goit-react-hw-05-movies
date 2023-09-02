@@ -20,6 +20,7 @@ function Home() {
 
     fetchTrending();
   }, []);
+  // console.log(trendingMovies);
 
   return (
     <div>

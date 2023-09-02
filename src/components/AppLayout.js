@@ -1,26 +1,22 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import styled from 'styled-components';
-
-const Container = styled.main`
-  gap: 12px;
-  padding: 0 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-`;
+import { Container, List, StyledLink } from 'styles/AppLayout.styled';
 
 export const AppLayout = () => {
+  const location = useLocation();
+
   return (
     <Container>
       <nav>
-        <ul>
+        <List>
           <li>
-            <Link to="/">Home</Link>
+            <StyledLink to="/" className={location.pathname === '/' ? 'active' : ''}>Home</StyledLink>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
+            <StyledLink to="/movies" className={location.pathname === '/movies' ? 'active' : ''}>Movies</StyledLink>
           </li>
-        </ul>
+        </List>
       </nav>
       <hr />
       <Outlet />
