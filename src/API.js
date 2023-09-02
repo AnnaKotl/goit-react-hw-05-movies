@@ -9,10 +9,9 @@ export const fetchTrendingMovies = async () => {
     const response = await axios.get(`${BASE_URL}/trending/all/day`, {
       params: {
         api_key: API_KEY,
-        language: 'en-US',
       },
     });
-    return response.data.results;
+    return response.data;
   } catch (error) {
     throw error;
   }
