@@ -1,43 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { startTransition } from 'react';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
-import { fetchTrendingMovies } from '../API';
-import { TrendItems } from 'components/TrendItems';
+import { fetchData } from '../API';
+import MoviesList from 'components/MoviesList';
 
-function Home() {
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Додав стейт для відстеження завантаження
-
+const Home = () => {
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
-    const fetchTrending = async () => {
+    const way = '/trending/movie/week';
+    setTimeout(async () => {
       try {
-        await startTransition(() => {
-          const fetchData = async () => {
-            const data = await fetchTrendingMovies();
-            setTrendingMovies(data.results);
-            setIsLoading(false); // Змінив isLoading на false, коли дані завантажені
-          };
-          fetchData();
-        });
+        const { results } = await fetchData(way);
+        setMovies([...results]);
       } catch (error) {
-        console.error('Error fetching trending movies:', error);
-        setIsLoading(false); // Обробив помилку та встановив isLoading в false
+        console.error(error);
+        toast.error('Error fetch data!');
+      } finally {
+        toast.success('Success!');
       }
-    };
-
-    fetchTrending();
+    }, 100);
   }, []);
 
   return (
-    <div>
-      <h1>Trending Today</h1>
-      {isLoading ? (
-        <p>Loading...</p> // Відображаємо текст "Loading..." під час завантаження
-      ) : (
-        <TrendItems items={trendingMovies} /> // Показуємо TrendItems після завантаження
-      )}
-    </div>
+    <main>
+      <h2>Trending movies this week</h2>
+      <ul>
+        <MoviesList movies={movies} />
+      </ul>
+    </main>
   );
-}
+};
 
 export default Home;
