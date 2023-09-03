@@ -7,7 +7,7 @@ import MoviesList from 'components/MoviesList';
 const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    const way = '/trending/movie/week';
+    const way = '/trending/all/day'; //movie/day
     setTimeout(async () => {
       try {
         const { results } = await fetchData(way);
@@ -16,14 +16,14 @@ const Home = () => {
         console.error(error);
         toast.error('Error fetch data!');
       } finally {
-        toast.success('Success!');
+        toast.success('Success!'); //delite in build project
       }
     }, 100);
   }, []);
 
   return (
     <main>
-      <h2>Trending movies this week</h2>
+      <h2>Trending movies today</h2>
       <ul>
         <MoviesList movies={movies} />
       </ul>

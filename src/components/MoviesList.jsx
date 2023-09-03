@@ -10,17 +10,19 @@ const MoviesList = ({ movies }) => {
 
   return (
     <>
-      {movies.map(({ id, poster_path, original_title, title }) => (
-        <li key={id}>
-          <Link to={`/movies/${id}`} state={{ from: location }}>
+      {movies.map(movie => (
+        <li key={movie.id}>
+          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
             <img
               src={
-                poster_path && `https://image.tmdb.org/t/p/w92${poster_path}`
+                movie.poster_path &&
+                `https://image.tmdb.org/t/p/w500${movie.poster_path}`
               }
-              alt={original_title}
-              width="80"
+              alt={movie.original_title}
+              width="100"
             />
-            {title}
+            {movie.title} 
+            {/* рендер назви фільму! */}
           </Link>
         </li>
       ))}
@@ -29,3 +31,22 @@ const MoviesList = ({ movies }) => {
 };
 
 export default MoviesList;
+
+  // return (
+  //   <>
+  //     {movies.map(({ id, poster_path, original_title, title }) => (
+  //       <li key={id}>
+  //         <Link to={`/movies/${id}`} state={{ from: location }}>
+  //           <img
+  //             src={
+  //               poster_path && `https://image.tmdb.org/t/p/w500${poster_path}`
+  //             }
+  //             alt={original_title}
+  //             width="160"
+  //           />
+  //           {title}
+  //         </Link>
+  //       </li>
+  //     ))}
+  //   </>
+  // );
