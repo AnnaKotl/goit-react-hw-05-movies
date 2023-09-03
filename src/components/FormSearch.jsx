@@ -13,7 +13,7 @@ export const FormSearch = ({ value, onChange }) => {
         debounceTimeout={500}
         value={value}
         onChange={e => onChange(e.target.value)}
-        placeholder="type here"
+        placeholder="search movie"
       />
     </form>
   );

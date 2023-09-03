@@ -1,4 +1,10 @@
+import React from 'react';
+
 function MovieCard({ movie }) {
+  if (!movie) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <img src={movie.poster_path} alt={movie.title} />

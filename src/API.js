@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '92ffd126667a269ee6cc7b4221abb134';
 
-// найпопулярніші фільми
+// найпопулярніші фільми 1
 export const fetchTrendingMovies = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/trending/all/day`, {
@@ -16,6 +16,20 @@ export const fetchTrendingMovies = async () => {
     throw error;
   }
 };
+
+// найпопулярніші фільми 2
+// export const fetchTrendingMovies = async () => {
+//   try {
+//     const response = await axios.get(`${BASE_URL}/trending/all/day`, {
+//       params: {
+//         api_key: API_KEY,
+//       },
+//     });
+//     return response.data.results;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 // пошук фільмів за ключовим словом
 export const searchMovies = async (query) => {

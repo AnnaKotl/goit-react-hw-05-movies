@@ -35,13 +35,11 @@ const Movies = () => {
 
   return (
     <div>
-      {/* Включаємо компонент пошуку */}
       <FormSearch value={movieName} onChange={updateQueryString} />
 
       {loading ? (
         <div>Loading...</div>
       ) : (
-        // Відображаємо результати пошуку за допомогою MovieList компонента
         <MovieList movies={searchResults} />
       )}
     </div>

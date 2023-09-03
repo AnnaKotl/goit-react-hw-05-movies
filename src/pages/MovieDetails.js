@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import { startTransition } from 'react'; // Додавання startTransition з react
+import { startTransition } from 'react';
 
 import { getMovieDetails } from '../API';
 
@@ -14,10 +14,8 @@ function MovieDetails() {
   useEffect(() => {
     async function fetchMovieDetails() {
       try {
-        await startTransition(() => { // Використання startTransition для оптимізації
-          const movieInfo = getMovieDetails(id); // Виклик getMovieDetails без await, оскільки ми використовуємо startTransition
-          setMovie(movieInfo);
-        });
+        const movieInfo = await startTransition(() => getMovieDetails(id));
+        setMovie(movieInfo);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -25,6 +23,7 @@ function MovieDetails() {
 
     fetchMovieDetails();
   }, [id]);
+
 
   if (!movie) {
     return <div>Loading...</div>;
