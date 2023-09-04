@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 
 import { fetchData } from '../API';
 import MoviesList from 'components/MoviesList';
+import { TitleFilm } from 'styles/MoviesList.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,10 +24,11 @@ const Home = () => {
 
   return (
     <main>
-      <h2>Trending movies today</h2>
+      <TitleFilm>Trending movies today</TitleFilm>
       <ul>
         <MoviesList movies={movies} />
       </ul>
+      <hr/>
     </main>
   );
 };

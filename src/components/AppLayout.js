@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
-import { Outlet  } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { ImFilm } from 'react-icons/fa';
 import { Container, Nav, NavigLink } from 'styles/AppLayout.styled';
 
 const AppLayout = () => {
@@ -7,16 +8,14 @@ const AppLayout = () => {
     <Container>
       
       <header>
+        <span><ImFilm /></span>
         <Nav>
-
           <NavigLink to="/">
             Home
           </NavigLink>
-
           <NavigLink to="/movies">
             Movies
           </NavigLink>
-
         </Nav>
          <hr />
       </header>

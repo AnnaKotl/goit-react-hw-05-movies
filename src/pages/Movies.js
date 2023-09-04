@@ -48,11 +48,7 @@ const Movies = () => {
 
   return (
     <main>
-      {currentSearch === '' ? (
-        <h2>Find movie:</h2>
-      ) : (
-        <div style={{ height: '60px' }}></div>
-      )}
+      <h2>Find movies:</h2>
       <form onSubmit={onSubmitSearch}>
         <input
           type="text"

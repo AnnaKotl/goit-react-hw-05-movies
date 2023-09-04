@@ -7,12 +7,12 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     margin: 0;
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     font-style: normal;
     line-height: 1.5;
     color: #f5e1e8;
-    background: #061e45;
+    background: #010c1f;
 }
 
     code {
@@ -39,11 +39,13 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
     max-width: 100%;
     height: auto;
+    margin: auto;
+    padding: auto;
     }
 
     a {
     color: #f5e1e8;
-    font-size: 18px;
+    font-size: 14px;
     font-style: normal;
     cursor: pointer;
     text-decoration: none;
