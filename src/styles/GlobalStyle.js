@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 400;
     font-style: normal;
-    line-height: 1.5;
+    line-height: 1.2;
     color: #f5e1e8;
     background: #010c1f;
 }
@@ -45,8 +45,9 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
     color: #f5e1e8;
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
+    line-height: 1.13;
     cursor: pointer;
     text-decoration: none;
     }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { FcClapperboard } from "react-icons/fc";
 
 import { fetchData } from '../API';
 import MoviesList from 'components/MoviesList';
-import { TitleFilm } from 'styles/MoviesList.styled';
+import { TitleFilm, IconContainer, MainContainer } from 'styles/MoviesList.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,13 +24,16 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
+    <MainContainer>
       <TitleFilm>Trending movies today</TitleFilm>
+      <IconContainer>
+        <FcClapperboard style={{ width: '30px', height: '30px' }} />
+      </IconContainer>
       <ul>
         <MoviesList movies={movies} />
       </ul>
       <hr/>
-    </main>
+    </MainContainer>
   );
 };
 

@@ -32,5 +32,16 @@ export const FilmPoster = styled.img`
 export const TitleFilm = styled.h2`
     font-size: 32px;
     font-weight: 700;
-    margin: 8px 0 18px;
+    margin: 8px 0 12px;
+    
+`;
+
+export const MainContainer = styled.main`
+    position: relative;
+`;
+
+export const IconContainer = styled.span`
+    position: absolute;
+    top: 10px;
+    right: 0;
 `;

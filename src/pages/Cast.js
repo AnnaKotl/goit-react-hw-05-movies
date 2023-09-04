@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import React, { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
 
 
 
-const Cast = () => {
+// const Cast = () => {
 
-};
+// };
 
-export default Cast;
+// export default Cast;
