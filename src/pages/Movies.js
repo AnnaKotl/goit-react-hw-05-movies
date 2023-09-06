@@ -5,7 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { fetchData } from '../components/API';
 import Spinner from 'components/Spinner';
 import SearchMovies from 'components/SearchMovies';
-import { SearchMoviesWraper, SearchForm, TitleForm, InputForm, IconWraper, FormWraper } from 'styles/Movies.styled';
+import { SearchMoviesWraper, SearchForm, TitleForm, InputForm, IconWraper, FormWraper, ButtonSubmit } from 'styles/Movies.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -70,7 +70,7 @@ const Movies = () => {
               autoFocus
               placeholder="enter a movie name"
             />
-            <button type="submit">Search</button>
+            <ButtonSubmit type="submit">search</ButtonSubmit>
           </SearchForm>
         </FormWraper>
         <hr />

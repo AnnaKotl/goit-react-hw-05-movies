@@ -7,6 +7,7 @@ export const SearchMoviesWraper = styled.section`
 
 export const SearchForm = styled.form`
     display: flex;
+    align-items: center;
     gap: 10px;
     margin: 14px 0 20px;
 `;
@@ -36,13 +37,24 @@ export const FormWraper = styled.div`
 
 export const IconWraper = styled.span`
     position: absolute;
-    top: 7px;
+    top: 9px;
     left: 9px;
 `;
-
 
 export const TitleForm = styled.h2`
     font-size: 36px;
     font-weight: 500;
     margin: 10px 0 12px;
+`;
+
+export const ButtonSubmit = styled.button`
+    min-width: 80px;
+    height: 42px;
+    border-radius: 4px;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    background-color: #f0d371; //#c9af55
+    color: #010c1f;
 `;
