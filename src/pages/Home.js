@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FcClapperboard } from "react-icons/fc";
 
-import { fetchData } from '../API';
+import { fetchData } from '../components/API';
 import MoviesList from 'components/MoviesList';
 import { TitleFilm, IconContainer, MainContainer } from 'styles/MoviesList.styled';
+import Spinner from 'components/Spinner';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const way = '/trending/all/day'; //movie/day
     setTimeout(async () => {
@@ -18,9 +20,10 @@ const Home = () => {
         console.error(error);
         toast.error('Error fetch data!');
       } finally {
+        setLoading(false);
         toast.success('Success!'); //delite in build project
       }
-    }, 100);
+    }, 1000);
   }, []);
 
   return (
@@ -29,9 +32,13 @@ const Home = () => {
       <IconContainer>
         <FcClapperboard style={{ width: '30px', height: '30px' }} />
       </IconContainer>
-      <ul>
-        <MoviesList movies={movies} />
-      </ul>
+      {loading ? (
+        <Spinner/>
+      ) : (
+        <ul>
+          <MoviesList movies={movies} />
+        </ul>
+      )}
       <hr/>
     </MainContainer>
   );

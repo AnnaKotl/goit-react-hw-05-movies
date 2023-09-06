@@ -2,11 +2,12 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FilmCard, FilmList, FilmPoster } from '../styles/MoviesList.styled';
 
+
 const MoviesList = ({ movies }) => {
   const location = useLocation();
 
   if (movies.length === 0) {
-    return <p>The list of popular films is missing</p>; //переробити на спінер!!!
+    return <p>The list of popular films is missing</p>;
   }
 
   return (

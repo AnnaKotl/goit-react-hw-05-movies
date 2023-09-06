@@ -44,3 +44,9 @@ export const NavigLink = styled(NavLink)`
     transform: scaleX(1);
     }
 `;
+export const SpinnerWraper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 120px 20px;
+`;
