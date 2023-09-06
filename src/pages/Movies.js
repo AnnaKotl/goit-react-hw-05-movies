@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { BiSearch } from "react-icons/bi";
 import { fetchData } from '../components/API';
 import Spinner from 'components/Spinner';
 import SearchMovies from 'components/SearchMovies';
-import { TitleFilm } from '../styles/MoviesList.styled';
-import { SearchMoviesWraper, SearchForm } from 'styles/Movies.styled';
+import { SearchMoviesWraper, SearchForm, TitleForm, InputForm, IconWraper, FormWraper } from 'styles/Movies.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -21,16 +21,19 @@ const Movies = () => {
       toast.error('Enter some text');
       return;
     }
-    setQuery({ search: newSearch });
+
+    setQuery({ search: newSearch, _timestamp: Date.now() });
+
     e.target.elements.search.value = '';
   };
 
   useEffect(() => {
-      if (currentSearch === '') {
-        return;
-      }
+    if (currentSearch === '') {
+      setMovies([]);
+      return;
+    }
 
-      setLoading(true);
+    setLoading(true);
 
     toast.loading('Loading...', { duration: 300 });
     const querySearch = `&query=${currentSearch}`;
@@ -48,27 +51,30 @@ const Movies = () => {
       } catch (error) {
         console.warn(error);
         toast.error('Oops! Something went wrong...');
-      }finally {
-      setLoading(false);
-    }
+      } finally {
+        setLoading(false);
+      }
     }, 500);
   }, [currentSearch]);
 
   return (
     <main>
       <>
-        <TitleFilm>Find movies:</TitleFilm>
-        <SearchForm onSubmit={onSubmitSearch}>
-          <input
-            type="text"
-            name="search"
-            autoFocus
-            placeholder="Search movies"
-          />
-          <button type="submit">Search</button>
-        </SearchForm>
+        <TitleForm>Find movies:</TitleForm>
+        <FormWraper>
+          <SearchForm onSubmit={onSubmitSearch}>
+            <IconWraper><BiSearch style={{ width: '24px', height: '24px', color: '#ad9d66' }}/></IconWraper>
+            <InputForm
+              type="text"
+              name="search"
+              autoFocus
+              placeholder="enter a movie name"
+            />
+            <button type="submit">Search</button>
+          </SearchForm>
+        </FormWraper>
         <hr />
-        {movies !== [] && (
+        {movies.length > 0 && (
           <SearchMoviesWraper>
             {loading ? (
               <Spinner />
@@ -77,13 +83,12 @@ const Movies = () => {
                 <ul>
                   <SearchMovies movies={movies} />
                 </ul>
-              </> 
+              </>
             )}
           </SearchMoviesWraper>
         )}
       </>
     </main>
-    
   );
 };
 

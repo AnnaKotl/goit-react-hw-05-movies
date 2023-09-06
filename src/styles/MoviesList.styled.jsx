@@ -16,11 +16,11 @@ export const FilmCard = styled.div`
     width: 166px;
     padding: 6px 6px 10px;
 
-    outline: 1px solid #fff; // for css container
+    /* outline: 1px solid #fff; // for css container */
 `;
 
 export const FilmPoster = styled.img`
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     transition: 0.3s ease;
 
     &:hover {
