@@ -21,9 +21,8 @@ const Home = () => {
         toast.error('Error fetch data!');
       } finally {
         setLoading(false);
-        toast.success('Success!'); //delite in build project
       }
-    }, 1000);
+    }, 300);
   }, []);
 
   return (
