@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { fetchData } from 'components/API';
 import Spinner from 'components/Spinner';
-import { DetailsWrapper, FilmPoster, FilmCard, TitleFilm } from 'styles/MoviesList.styled';
+import { DetailsWrapper, FilmPoster, FilmCard } from 'styles/MoviesList.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
