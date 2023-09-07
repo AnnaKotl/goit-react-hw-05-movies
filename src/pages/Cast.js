@@ -40,6 +40,7 @@ const Cast = () => {
                 `http://image.tmdb.org/t/p/w500${info.profile_path}`
               }
               alt={info.original_name}
+              width="100"
             />
             <h3>{info.name}</h3>
             <p>

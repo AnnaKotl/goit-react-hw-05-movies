@@ -1,8 +1,19 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { HiArrowLeft } from 'react-icons/hi';
 import { toast } from 'react-hot-toast';
 import { fetchData } from 'components/API';
 import Spinner from 'components/Spinner';
+import {
+  ButtonBack,
+  DetailsImg,
+  DetailsTitle,
+  SectionAdd,
+  DetailsWrapper,
+  Section,
+  DetailsLink,
+  LinkAdd,
+} from 'styles/MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -20,8 +31,6 @@ const MovieDetails = () => {
       } catch (error) {
         console.warn(error);
         toast.error('Oops! Something went wrong...');
-      } finally {
-        toast.success('Success!');
       }
     }, 300);
   }, [movieId]);
@@ -57,16 +66,27 @@ const MovieDetails = () => {
     <>
       {info && (
         <main>
-          <Link to={backLocationRef.current}>
-            <button>Back</button>
+          <Link
+            to={backLocationRef.current}
+            style={{ width: '20px', display: 'block' }}
+          >
+            <ButtonBack>
+              <HiArrowLeft
+                style={{
+                  width: '20px',
+                  height: '20px',
+                  color: '#010c1f',
+                  marginRight: 'auto',
+                }}
+              />
+            </ButtonBack>
           </Link>
-          <hr />
-          <section>
-            <img src={poster} alt={original_title} width="220" height="340" />
-            <div>
-              <h2>
+          <Section>
+            <DetailsImg src={poster} alt={original_title} width="240" />
+            <DetailsWrapper>
+              <DetailsTitle>
                 {title} ({release})
-              </h2>
+              </DetailsTitle>
               {budget ? (
                 <p>
                   The budget($): <b>{budget}</b>
@@ -75,32 +95,32 @@ const MovieDetails = () => {
               <p>
                 User Score: <b>{rating}%</b>
               </p>
-              <h3>Overview</h3>
+              <DetailsTitle>Overview</DetailsTitle>
               <p>{overview} </p>
-              <h4>Genres</h4>
+              <DetailsTitle>Genres</DetailsTitle>
               <ul>{tags}</ul>
               {homepage && (
                 <div>
-                  <p>Homepage: </p>
-                  <a href={homepage} target="_blank" rel="noreferrer">
+                  <DetailsTitle>Homepage: </DetailsTitle>
+                  <DetailsLink href={homepage} target="_blank" rel="noreferrer">
                     {homepage}
-                  </a>
+                  </DetailsLink>
                 </div>
               )}
-            </div>
-          </section>
+            </DetailsWrapper>
+          </Section>
           <hr />
-          <section>
+          <SectionAdd>
             <h5>Additional information</h5>
             <ul>
               <li>
-                <Link to={'cast'}>Cast</Link>
+                <LinkAdd to={'cast'}>Cast</LinkAdd>
               </li>
               <li>
-                <Link to={'reviews'}>Reviews</Link>
+                <LinkAdd to={'reviews'}>Reviews</LinkAdd>
               </li>
             </ul>
-          </section>
+          </SectionAdd>
           <hr />
           <Suspense fallback={<Spinner />}>
             <Outlet />

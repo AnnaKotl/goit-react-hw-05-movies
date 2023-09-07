@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FilmCard, FilmList, FilmPoster } from '../styles/MoviesList.styled';
 
-
 const MoviesList = ({ movies }) => {
   const location = useLocation();
 
@@ -12,20 +11,19 @@ const MoviesList = ({ movies }) => {
 
   return (
     <FilmList>
-      {movies.map(movie => (
-        <li key={movie.id}>
+      {movies.map(({ id, poster_path, original_title, title }) => (
+        <li key={id}>
           <FilmCard>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <Link to={`/movies/${id}`} state={{ from: location }}>
               <FilmPoster
                 src={
-                  movie.poster_path &&
-                  `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  poster_path &&
+                  `https://image.tmdb.org/t/p/w500${poster_path}`
                 }
-                alt={movie.original_title}
+                alt={original_title}
                 width="150"
               />
-              {movie.title} 
-              {/* рендер назви фільму ---- !!! */}
+              {title && title.trim()} 
             </Link>
           </FilmCard>
         </li>
@@ -35,22 +33,3 @@ const MoviesList = ({ movies }) => {
 };
 
 export default MoviesList;
-
-  // return (
-  //   <>
-  //     {movies.map(({ id, poster_path, original_title, title }) => (
-  //       <li key={id}>
-  //         <Link to={`/movies/${id}`} state={{ from: location }}>
-  //           <img
-  //             src={
-  //               poster_path && `https://image.tmdb.org/t/p/w500${poster_path}`
-  //             }
-  //             alt={original_title}
-  //             width="160"
-  //           />
-  //           {title}
-  //         </Link>
-  //       </li>
-  //     ))}
-  //   </>
-  // );

@@ -20,7 +20,8 @@ export const InputForm = styled.input`
     min-width: 360px;
     min-height: 38px;
     transition: 0.3s ease;
-    &:focus {
+    &:hover, 
+    &:focus: {
     outline: 2px solid #cacbeb;
     }
     &::placeholder {
@@ -53,15 +54,17 @@ export const ButtonSubmit = styled.button`
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    align-items: center;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.5;
     background-color: #f0d371;
     color: #010c1f;
     transition: 0.4s ease;
-    &:hover {
-    border: 1px solid #78621c;
-    background-color: #f0ca4d;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 1);
+    &:hover, 
+    &:focus: {
+        border: 1px solid #78621c;
+        background-color: #f0ca4d;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     }
 `;

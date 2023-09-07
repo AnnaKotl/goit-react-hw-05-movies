@@ -7,19 +7,19 @@ const SearchMovies = ({ movies }) => {
 
   return (
     <FilmList>
-      {movies.map(film => (
-        <li key={film.id}>
+      {movies.map(({ id, poster_path, original_title, title }) => (
+        <li key={id}>
           <FilmCard>
-            <Link to={`/movies/${film.id}`} state={{ from: location }}>
+            <Link to={`/movies/${id}`} state={{ from: location }}>
               <FilmPoster
                 src={
-                  film.poster_path &&
-                  `https://image.tmdb.org/t/p/w500${film.poster_path}`
+                  poster_path &&
+                  `https://image.tmdb.org/t/p/w500${poster_path}`
                 }
-                alt={film.original_title}
+                alt={original_title}
                 width="150"
               />
-              {film.title}
+              {title}
             </Link>
           </FilmCard>
         </li>

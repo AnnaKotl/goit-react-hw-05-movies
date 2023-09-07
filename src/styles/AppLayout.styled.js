@@ -11,6 +11,12 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: flex-end;
   gap: 30px;
+
+`;
+
+export const Logo = styled(NavLink)`
+  margin-right: auto;
+  padding: 16px 0 10px;
 `;
 
 export const NavigLink = styled(NavLink)`

@@ -11,7 +11,8 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const way = '/trending/all/day'; //movie/day
+    const way = '/trending/movie/day';
+    // 'all/day' & 'movie/day' ?
     setTimeout(async () => {
       try {
         const { results } = await fetchData(way);
