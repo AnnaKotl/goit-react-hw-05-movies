@@ -45,3 +45,11 @@ export const IconContainer = styled.span`
     top: 10px;
     right: 0;
 `;
+
+export const DetailsWrapper = styled.ul`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 26px;
+    row-gap: 16px;
+`;

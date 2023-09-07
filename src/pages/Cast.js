@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { fetchData } from 'components/API';
 import Spinner from 'components/Spinner';
+import { DetailsWrapper, FilmPoster, FilmCard, TitleFilm } from 'styles/MoviesList.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -30,27 +31,28 @@ const Cast = () => {
   }
 
   return (
-    <section>
-      <ul>
+    <>
+      <DetailsWrapper>
         {details.map(info => (
           <li key={info.credit_id}>
-            <img
-              src={
-                info.profile_path &&
-                `http://image.tmdb.org/t/p/w500${info.profile_path}`
-              }
-              alt={info.original_name}
-              width="100"
-            />
-            <h3>{info.name}</h3>
-            <p>
-              Character: <b>{info.character}</b>
-            </p>
-            <hr />
+            <FilmCard>
+              <FilmPoster
+                src={
+                  info.profile_path &&
+                  `http://image.tmdb.org/t/p/w500${info.profile_path}`
+                }
+                alt={info.original_name}
+                width="100"
+              />
+              <h3>{info.name}</h3>
+              <p>
+                Character: <b>{info.character}</b>
+              </p>
+            </FilmCard>
           </li>
         ))}
-      </ul>
-    </section>
+      </DetailsWrapper>
+    </>
   );
 };
 

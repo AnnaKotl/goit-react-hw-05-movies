@@ -6,17 +6,17 @@ export const ButtonBack = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
-  border-radius: 4px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   background-color: #a6a9f5;
   transition: all 0.5s ease;
   font-weight: 600;
   font-size: 18px;
-  width: 40px;
+  width: 34px;
 
   &:hover {
     transform: scale(1.01);
@@ -45,13 +45,14 @@ export const Section = styled.section`
   gap: 40px;
   background-color: rgba(237, 237, 242, 0.7);
   color: #010c1f;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const DetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 6px;
 `;
 
 export const DetailsImg = styled.img`
