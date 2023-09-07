@@ -7,8 +7,8 @@ import Spinner from 'components/Spinner';
 const Cast = () => {
   const { movieId } = useParams();
   const [details, setDetails] = useState([]);
-    const [loading, setLoading] = useState(true);
-    
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const wayCast = `/movie/${movieId}/credits`;
 
@@ -20,7 +20,7 @@ const Cast = () => {
         console.warn(error);
         toast.error('Oops! Something went wrong...');
       } finally {
-          setLoading(false);
+        setLoading(false);
       }
     }, 300);
   }, [movieId]);
