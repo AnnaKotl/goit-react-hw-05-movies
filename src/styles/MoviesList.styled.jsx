@@ -15,8 +15,6 @@ export const FilmCard = styled.div`
     text-align: center;
     width: 166px;
     padding: 6px 6px 10px;
-
-    /* outline: 1px solid #fff; // for css container */
 `;
 
 export const FilmPoster = styled.img`
