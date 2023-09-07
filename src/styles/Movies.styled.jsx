@@ -52,9 +52,16 @@ export const ButtonSubmit = styled.button`
     height: 42px;
     border-radius: 4px;
     border: none;
+    cursor: pointer;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.5;
-    background-color: #f0d371; //#c9af55
+    background-color: #f0d371;
     color: #010c1f;
+    transition: 0.4s ease;
+    &:hover {
+    border: 1px solid #78621c;
+    background-color: #f0ca4d;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 1);
+    }
 `;
